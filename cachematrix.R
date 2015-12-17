@@ -3,7 +3,7 @@
 ##
 ## The first function, makeCacheMatrix, initially takes a matrix and returns a 
 ## list of 4 functions in the global environment. Two can be used to get and set
-##the matrix in question. The other 2 can be used to get and set its inverse.
+## the matrix in question. The other 2 can be used to get and set its inverse.
 ##
 ## The second function, cacheSolve, first tries to get a cached version of the 
 ## matrix inverse. If so it prints a message to say it is doing so and prints
@@ -23,6 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 x <<- y
                 i <<- NULL
         }
+        
         get <- function() x
         setinverse <- function(inverse) i <<- inverse
         getinverse <- function() i
@@ -36,17 +37,17 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function uses an object created by the above function to output an
 ## inverse for the stored input matrix. First it looks to see if an inverse is 
 ## cached in the above, in which case it prints a message and outputs this 
-## inverse. If there isn't one cached, it retrieves the input matrix cached 
+## inverse. If there isn't one cached, it then retrieves the input matrix cached 
 ## above, computes its inverse and outputs it. This can then be cached using the
 ## setinverse function above, avoiding the need to compute it again.
 
 cacheSolve <- function(x, ...) {
-        
         i <- x$getinverse()
         if(!is.null(i)){
                 message("getting cached data")
                 return(i)
         }
+        
         matrix.data <- x$get()
         i <- solve(matrix.data,...)
         i
