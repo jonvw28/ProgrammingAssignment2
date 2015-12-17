@@ -1,5 +1,5 @@
 ## Below are two functions that enable the inverse of a matrix to be cached once
-## calculated avoiding recalculation.
+## calculated, avoiding recalculation.
 ##
 ## The first function, makeCacheMatrix, initially takes a matrix and returns a 
 ## list of 4 functions in the global environment. Two can be used to get and set
@@ -7,14 +7,16 @@
 ##
 ## The second function, cacheSolve, first tries to get a cached version of the 
 ## matrix inverse. If so it prints a message to say it is doing so and prints
-## the cached value. If there isn't a value then is calculates this value by
-## retrieving the matrix from makeCacheMatrix and prints this.
+## the cached value. If there isn't a value then it calculates this value by
+## retrieving the matrix from makeCacheMatrix and prints this inverse.
 
 
-## On first call this function stores a matrix it is given and sets a null value
-## for its inverse. It then gives 4 functions that can be used to retrieve the
-## matrix, to set a new matrix (clearing any cached inverse), to set and store
-## an inverse matrix and to retrieve any cached inverse
+## On first call this function stores the matrix given and sets a null value
+## for its inverse. It then gives 4 functions that can be used to:
+## retrieve the matrix
+## set a new matrix (clearing any cached inverse)
+## set and store an inverse matrix
+## retrieve any cached inverse
 
 makeCacheMatrix <- function(x = matrix()) {
         i <- NULL
